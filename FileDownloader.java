@@ -22,6 +22,10 @@ public class FileDownloader implements Runnable {
             OutputStream outputStream = null;
             try {
                 inputStream = this.socket.getInputStream();
+                File file = new File("server");
+                if(!file.exists()) {
+                    file.mkdir();
+                }
                 outputStream = new FileOutputStream(storeLocation + fileName);
                 System.out.println("FileName : " + storeLocation + fileName);
                 byte[] bytes = new byte[Utility.BUFFER_SIZE];
